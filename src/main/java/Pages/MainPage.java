@@ -1,22 +1,27 @@
 package Pages;
 
-import Consts.Consts;
+import Consts.MainPageConsts;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
 public class MainPage extends BasePage{
-    private static final String LOGO_IMG = "//img[@itemprop='logo']";
-    private static final String CONTACT_US_OPTION = "//a[text()='Contact us']";
+    private static final By LOGO_IMG = By.xpath(MainPageConsts.LOGO_IMG);
+    private static final By CONTACT_US_OPTION = By.xpath(MainPageConsts.CONTACT_US_OPTION);
+
+    public MainPage(WebDriver webDriver) {
+        super(webDriver);
+    }
 
     public void navigateToMainPage(){
-        webDriver.get(Consts.MAIN_URL);
+        webDriver.get(MainPageConsts.MAIN_URL);
     }
 
     public boolean isLogoVisible(){
-        Boolean isVisible =  elementExists(LOGO_IMG);
-        return isVisible;
+        return elementExists(LOGO_IMG);
     }
 
     public ContactUsPage openContactUsTab(){
-        clickElementByXpath(CONTACT_US_OPTION);
-        return new ContactUsPage();
+        clickElement(CONTACT_US_OPTION);
+        return new ContactUsPage(webDriver);
     }
 }

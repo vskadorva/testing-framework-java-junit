@@ -3,7 +3,6 @@ import Pages.MainPage;
 import Utils.UseCaseBase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,13 +12,9 @@ public class MainPageTest extends UseCaseBase {
     private static MainPage mainPage;
     public static final Logger logger = LogManager.getLogger(MainPageTest.class);
 
-    @BeforeAll
-    public static void classSetup() {
-        mainPage = new MainPage();
-    }
-
     @BeforeEach
     public void beforeTest() {
+        mainPage = new MainPage(webDriver);
         mainPage.navigateToMainPage();
     }
 

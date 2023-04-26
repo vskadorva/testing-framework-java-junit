@@ -43,7 +43,7 @@ public class SharedDriver {
 
     protected static void closeDriver() {
         if(webDriver!=null){
-            webDriver.close();
+            webDriver.quit();
         }
     }
 }

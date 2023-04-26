@@ -6,14 +6,13 @@ import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.WebDriver;
 
 public class UseCaseBase {
-    private static WebDriver webDriver;
-    private static BasePage page;
+    protected static WebDriver webDriver;
+    protected static BasePage page;
 
     @BeforeAll
     public static void setupMain() {
-        page = new BasePage();
         webDriver = SharedDriver.getWebDriver(SharedDriver.Browser.CHROME);
-        page.setWebDriver(webDriver);
+        page = new BasePage(webDriver);
     }
 
 
